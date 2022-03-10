@@ -25,7 +25,7 @@
         // https://github.com/tensorflow/tfjs-models/tree/master/speech-commands
 
         // the link to your model provided by Teachable Machine export panel
-        const URL = "https://teachablemachine.withgoogle.com/models/Kh4eLd4sQ/";
+        const URL = "https://teachablemachine.withgoogle.com/models/gHkSJm0w8/";
 
         const createModel = async () => {
             const checkpointURL = URL + "model.json"; // model topology
@@ -46,7 +46,7 @@
         const init = async () => {
             document.getElementById("img_btn").src = "src/recording1.png";
             const recognizer = await createModel();
-            const classLabels = recognizer.wordLabels(); // get class labelse
+            const classLabels = recognizer.wordLabels(); // get class labels
             const labelContainer = document.getElementById("label-container");
             document.getElementById("img_btn").src = "src/recording2.png";
             for (let i = 0; i < classLabels.length; i++) {
@@ -59,8 +59,19 @@
             recognizer.listen(result => {
                 const scores = result.scores; // probability of prediction for each class
                 // render the probability scores per class
-                const classPrediction = "상위(" + result.scores[0].toFixed(2) * 100 + "%)";
-                labelContainer.childNodes[0].innerHTML = classPrediction;
+                if (result.scores[1].toFixed(2) > 0.49){
+                    const classPrediction = "상위(" + (100 - result.scores[1].toFixed(2) * 100) + "%)";
+                    labelContainer.childNodes[0].innerHTML = classPrediction;
+                }
+                else if (result.scores[2].toFixed(2) > 0.49){
+                    const classPrediction = "하위(" + result.scores[2].toFixed(2) * 100 + "%)";
+                    labelContainer.childNodes[0].innerHTML = classPrediction;
+                }
+                else {
+                    const classPrediction = "다른 소음";
+                    labelContainer.childNodes[0].innerHTML = classPrediction;
+                }
+                // labelContainer.childNodes[0].innerHTML = classPrediction;
             }, {
                 includeSpectrogram: true, // in case listen should return result.spectrogram
                 probabilityThreshold: 0.75,
@@ -73,6 +84,7 @@
         }
     </script>
 
+
     <script>
         function refresh() {
             window.location.reload("Refresh")
@@ -81,7 +93,8 @@
 
     <p><input type="button" value="초기화" class="page-reload" onClick="refresh(this)"></p>
 
-    <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-t4eUWvo8rLQS9OLz" data-ad-width="320" data-ad-height="100"></ins>
+    <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-t4eUWvo8rLQS9OLz" data-ad-width="320"
+        data-ad-height="100"></ins>
     <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
 </body>
 
