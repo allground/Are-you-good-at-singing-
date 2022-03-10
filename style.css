@@ -1,4 +1,4 @@
-.btn_image{
+.image{
   width: 400px;
   height: 400px;
   border-radius: 35%;
@@ -45,21 +45,30 @@ nav {
 .labelContainer{
   font-size: 3rem;
   text-align: center;
-  padding-top: 6%;
+  padding-top: 4%;
   padding-bottom: 4%;
   color: #E0F8F7;
 }
 
-.page-reload{
+.audio{
   margin-left: auto;
   margin-right: auto;
   display: block;
   padding: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
   border-radius: 15%;
   background-color: #FE2E2E;
   color: #610B0B;
+  font-size: 1.5rem;
 }
 
 body{
   background-color: black;
+}
+
+p{
+  color: #E0F8F7;
+  text-align: center;
+  font-size: 1.75rem;
 }
