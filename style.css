@@ -28,7 +28,7 @@ nav {
 
 .navbar-brand {
   padding-top: 2rem;
-  padding-bottom: 0.3125rem;
+  padding-bottom: 10rem;
   margin-right: 1rem;
   font-size: 2rem;
   text-decoration: none;
@@ -71,4 +71,5 @@ p{
   color: #E0F8F7;
   text-align: center;
   font-size: 1.75rem;
+  padding-top: 5rem;
 }
