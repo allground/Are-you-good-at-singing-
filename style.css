@@ -71,5 +71,9 @@ p{
   color: #E0F8F7;
   text-align: center;
   font-size: 1.75rem;
-  padding-top: 5rem;
+  padding-top: 3rem;
+}
+
+.kakao_ad_area{
+  padding-top: 2%;
 }
